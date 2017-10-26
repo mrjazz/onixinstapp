@@ -2,5 +2,3 @@ target
 .env
 .idea/
 *.iml
-
-src/test/java/com/sheremetov/instagram/InstagramApiTest.java
