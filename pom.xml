@@ -83,6 +83,11 @@
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>org.brunocvcunha.instagram4j</groupId>
+      <artifactId>instagram4j</artifactId>
+      <version>1.4</version>
+    </dependency>
   </dependencies>
 
   <build>
