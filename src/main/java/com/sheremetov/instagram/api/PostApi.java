@@ -21,12 +21,12 @@ public class PostApi {
     private StorageService storageService;
 
 
-    @RequestMapping(value="/")
+    @RequestMapping(value="/", produces = "application/json")
     public List<Post> posts() throws Exception {
         return storageService.getPosts(1 + IntegerUtils.randomInt(9));
     }
 
-    @RequestMapping("/{userId}")
+    @RequestMapping(value="/{userId}", produces = "application/json")
     public Post post(@PathVariable int userId) throws Exception {
         return storageService.getPost();
     }

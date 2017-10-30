@@ -21,17 +21,17 @@ public class UserApi {
     private StorageService storageService;
 
 
-    @RequestMapping(value="/following")
+    @RequestMapping(value="/following", produces = "application/json")
     public List<User> following() throws Exception {
         return storageService.getFollowing(IntegerUtils.randomInt(5) + 1);
     }
 
-    @RequestMapping(value="/gallery")
+    @RequestMapping(value="/gallery", produces = "application/json")
     public List<PostSummary> gallery() throws Exception {
         return storageService.getGallery();
     }
 
-    @RequestMapping("/{userId}")
+    @RequestMapping(value="/{userId}", produces = "application/json")
     public Profile profile(@PathVariable int userId) throws Exception {
         return storageService.getProfile();
     }
