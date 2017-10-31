@@ -3,7 +3,7 @@ webpackJsonp(["home.module"],{
 /***/ "../../../../../src/app/home/components/article.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<article class=\"article\">\n  <header>\n    <div class=\"article-logo\">\n      <a href=\"#/{{postData.profile.username}}\">\n        <img src=\"{{postData.profile.avatar}}\"></a>\n    </div>\n    <div class=\"article-title\">\n      <div>\n        <div class=\"name\">\n          <a title=\"natgeo\" href=\"#/{{postData.profile.username}}\">{{postData.profile.username}}</a>\n        </div>\n      </div>\n      <div class=\"location\" *ngIf=\"false\">\n        <a title=\"Seychelles\" routerLink=\"/explore\">Seychelles</a>\n      </div>\n    </div>\n  </header>\n  <div class=\"media-content\">\n    <div>\n      <div class=\"container\">\n        <div class=\"main-image\">\n          <div class=\"holder\" style=\"padding-bottom: 65%;\">\n            <img class=\"_2di5p\" src=\"{{postData.picture}}\">\n          </div>\n          <div class=\"shift\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"description\">\n    <section class=\"controls\">\n      <a class=\"like-btn\" href=\"#\" role=\"button\" aria-disabled=\"false\">\n        <span class=\"heart-open-icon\">Like</span>\n      </a>\n      <a class=\"add-comment-btn\" href=\"#\" role=\"button\">\n        <span class=\"comment-icon\">Comment</span>\n      </a>\n    </section>\n    <section class=\"likes\">\n      <div class=\"_3gwk6 _nt9ow\">\n        <a class=\"_nzn1h\" routerLink=\"/home\">\n          <span>{{postData.likesCount}}</span> likes\n        </a>\n      </div>\n    </section>\n    <div class=\"comments\">\n      <ul>\n        <li class=\"comment\" *ngFor=\"let comment of postData.comments\">\n          <a class=\"user-name\" title=\"{{comment.user.name}}\" href=\"#/{{comment.user.name}}\">{{comment.user.username}}</a>\n            <span>\n              {{comment.text}}\n            </span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"time\">\n      <a routerLink=\"/home\">\n        <time\n          title=\"{{postData.timestamp*1000 | date}}\">\n          {{postData.timestamp * 1000 | timeago}}\n        </time>\n      </a>\n    </div>\n    <section class=\"add-comment\">\n      <form>\n        <textarea aria-label=\"Add a comment…\" placeholder=\"Add a comment…\"></textarea>\n      </form>\n    </section>\n  </div>\n  <div class=\"more-options\">\n    <button>\n      <span class=\"options-ellipsis-icon\">More options</span>\n    </button>\n  </div>\n</article>\n"
+module.exports = "<article class=\"article\">\n  <header>\n    <div class=\"article-logo\">\n      <a href=\"#/{{postData.profile.username}}\">\n        <img src=\"{{postData.profile.avatar}}\"></a>\n    </div>\n    <div class=\"article-title\">\n      <div>\n        <div class=\"name\">\n          <a title=\"natgeo\" href=\"#/{{postData.profile.username}}\">{{postData.profile.username}}</a>\n        </div>\n      </div>\n      <div class=\"location\" *ngIf=\"false\">\n        <a title=\"Seychelles\" routerLink=\"/explore\">Seychelles</a>\n      </div>\n    </div>\n  </header>\n  <div class=\"media-content\">\n    <div>\n      <div class=\"container\">\n        <div class=\"main-image\">\n          <div class=\"holder\">\n            <img src=\"{{postData.picture.url}}\">\n          </div>\n          <div class=\"shift\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"description\">\n    <section class=\"controls\">\n      <a class=\"like-btn\" href=\"#\" role=\"button\" aria-disabled=\"false\">\n        <span class=\"heart-open-icon\">Like</span>\n      </a>\n      <a class=\"add-comment-btn\" href=\"#\" role=\"button\">\n        <span class=\"comment-icon\">Comment</span>\n      </a>\n    </section>\n    <section class=\"likes\">\n      <div class=\"_3gwk6 _nt9ow\">\n        <a class=\"_nzn1h\" routerLink=\"/home\">\n          <span>{{postData.likesCount}}</span> likes\n        </a>\n      </div>\n    </section>\n    <div class=\"comments\">\n      <ul>\n        <li class=\"comment\" *ngFor=\"let comment of postData.comments\">\n          <a class=\"user-name\" title=\"{{comment.user.name}}\" href=\"#/{{comment.user.name}}\">{{comment.user.username}}</a>\n            <span>\n              {{comment.text}}\n            </span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"time\">\n      <a routerLink=\"/home\">\n        <app-time-ago [timeStamp]=\"postData.timestamp * 1000\"></app-time-ago>\n      </a>\n    </div>\n    <section class=\"add-comment\">\n      <form>\n        <textarea aria-label=\"Add a comment…\" placeholder=\"Add a comment…\"></textarea>\n      </form>\n    </section>\n  </div>\n  <div class=\"more-options\">\n    <button>\n      <span class=\"options-ellipsis-icon\">More options</span>\n    </button>\n  </div>\n</article>\n"
 
 /***/ }),
 
@@ -52,8 +52,8 @@ ArticleComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__article_component__ = __webpack_require__("../../../../../src/app/home/components/article.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_parse_pipe__ = __webpack_require__("../../../../../src/app/shared/services/date-parse.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_time_ago_time_ago_module__ = __webpack_require__("../../../../../src/app/shared/time-ago/time-ago.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__article_component__ = __webpack_require__("../../../../../src/app/home/components/article.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,8 +66,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var COMPONENTS = [
-    __WEBPACK_IMPORTED_MODULE_3__article_component__["a" /* ArticleComponent */],
-    __WEBPACK_IMPORTED_MODULE_4__shared_services_date_parse_pipe__["a" /* DateParsePipe */]
+    __WEBPACK_IMPORTED_MODULE_4__article_component__["a" /* ArticleComponent */]
 ];
 var ComponentsModule = (function () {
     function ComponentsModule() {
@@ -79,7 +78,8 @@ ComponentsModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */]
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__shared_time_ago_time_ago_module__["a" /* TimeAgoModule */]
         ],
         declarations: COMPONENTS,
         exports: COMPONENTS,
@@ -192,58 +192,6 @@ HomeModule = __decorate([
 ], HomeModule);
 
 //# sourceMappingURL=home.module.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/shared/services/date-parse.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateParsePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var DateParsePipe = (function () {
-    function DateParsePipe() {
-    }
-    DateParsePipe.prototype.transform = function (value) {
-        var seconds = Math.floor((new Date().valueOf() - value) / 1000);
-        var interval = Math.floor(seconds / 31536000);
-        if (interval > 1) {
-            return interval + " years ago";
-        }
-        interval = Math.floor(seconds / 2592000);
-        if (interval > 1) {
-            return interval + " months ago";
-        }
-        interval = Math.floor(seconds / 86400);
-        if (interval > 1) {
-            return interval + " days ago";
-        }
-        interval = Math.floor(seconds / 3600);
-        if (interval > 1) {
-            return interval + " hours ago";
-        }
-        interval = Math.floor(seconds / 60);
-        if (interval > 1) {
-            return interval + " minutes ago";
-        }
-        return Math.floor(seconds) + " seconds ago";
-    };
-    return DateParsePipe;
-}());
-DateParsePipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
-        name: 'timeago'
-    })
-], DateParsePipe);
-
-//# sourceMappingURL=date-parse.pipe.js.map
 
 /***/ })
 

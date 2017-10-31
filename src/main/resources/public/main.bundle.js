@@ -6,11 +6,12 @@ webpackJsonp(["main"],{
 var map = {
 	"./explore/explore.module": [
 		"../../../../../src/app/explore/explore.module.ts",
-		"explore.module",
-		"common"
+		"common",
+		"explore.module"
 	],
 	"./home/home.module": [
 		"../../../../../src/app/home/home.module.ts",
+		"common",
 		"home.module"
 	],
 	"./profile/profile.module": [

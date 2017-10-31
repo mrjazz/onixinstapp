@@ -47,7 +47,7 @@ ComponentsModule = __decorate([
 /***/ "../../../../../src/app/explore/components/user-card.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a class=\"user-photo\" href=\"#/{{userData.name}}\">\n  <img  [src]=\"userData.user_photo\" >\n</a>\n<div class=\"user-info\">\n  <div class=\"name\">\n    <a title=\"bbc_travel\" href=\"#/{{userData.name}}\">{{userData.name}}</a>\n    <span class=\"verified-badge-icon\" title=\"Verified\" *ngIf=\"userData.verified\">Verified</span>\n  </div>\n  <div class=\"sub-title\">{{userData.full_name}}</div>\n</div>\n<div class=\"follow-section\">\n    <span>\n      <button>Follow</button>\n    </span>\n</div>\n"
+module.exports = "<a class=\"user-photo\" href=\"#/{{userData.username}}\">\n  <img  [src]=\"userData.avatar\" >\n</a>\n<div class=\"user-info\">\n  <div class=\"name\">\n    <a title=\"bbc_travel\" href=\"#/{{userData.username}}\">{{userData.username}}</a>\n    <span class=\"verified-badge-icon\" title=\"Verified\">Verified</span>\n  </div>\n  <div class=\"sub-title\">{{userData.full_name}}</div>\n</div>\n<div class=\"follow-section\">\n    <span>\n      <button>Follow</button>\n    </span>\n</div>\n"
 
 /***/ }),
 
@@ -90,7 +90,7 @@ UserCardComponent = __decorate([
 /***/ "../../../../../src/app/explore/explore.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"explore-container\">\n  <div class=\"discover-people\">\n    <h2 class=\"title\">Discover People</h2>\n    <div class=\"cards-container\">\n      <app-user-card *ngFor=\"let user of usersList\" [userData]=\"user\"></app-user-card>\n    </div>\n  </div>\n  <h2 class=\"explore-title\">Explore</h2>\n  <article class=\"gallery\">\n    <div>\n      <div *ngFor=\"let item of gallery; let i = index\">\n        <div class=\"gallery-row\" *ngIf=\"i % 3 == 0\">\n          <div class=\"gallery-item\">\n            <a (click)=\"explorePost(i)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i].photo_src\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 1)\">\n            <a (click)=\"explorePost(i)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+1].photo_src\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 2)\">\n            <a (click)=\"explorePost(i)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+2].photo_src\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n<app-post-view [isShown]=\"isPVShown\" (isShownChange)=\"isPVShown=$event\"></app-post-view>\n"
+module.exports = "<div class=\"explore-container\">\n  <div class=\"discover-people\">\n    <h2 class=\"title\">Discover People</h2>\n    <div class=\"cards-container\">\n      <app-user-card *ngFor=\"let user of usersList\" [userData]=\"user\"></app-user-card>\n    </div>\n  </div>\n  <h2 class=\"explore-title\">Explore</h2>\n  <article class=\"gallery\">\n    <div>\n      <div *ngFor=\"let item of gallery; let i = index\">\n        <div class=\"gallery-row\" *ngIf=\"i % 3 == 0\">\n          <div class=\"gallery-item\">\n            <a (click)=\"explorePost(gallery[i].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 1)\">\n            <a (click)=\"explorePost(gallery[i+1].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+1].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 2)\">\n            <a (click)=\"explorePost(gallery[i+2].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+2].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n<app-post-view (isShownChange)=\"postId=''\" [postId]=\"postId\"></app-post-view>\n"
 
 /***/ }),
 
@@ -115,65 +115,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ExploreComponent = (function () {
     function ExploreComponent(apiService) {
         this.apiService = apiService;
-        this.isPVShown = false;
-        this.usersList = [
-            {
-                name: 'bbc_travel',
-                full_name: 'BBC Travel',
-                user_photo: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-19/s150x150/13092393_1779436548951312_1888083157_a.jpg',
-                verified: true
-            },
-            {
-                name: 'animalplanet',
-                full_name: 'Animal Planet',
-                user_photo: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-19/s150x150/12071194_1636525869897761_2012216995_a.jpg',
-                verified: true
-            },
-            {
-                name: 'bbc_travel',
-                full_name: 'BBC Travel',
-                user_photo: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-19/s150x150/13092393_1779436548951312_1888083157_a.jpg',
-                verified: false
-            }
-        ];
-        this.gallery = [
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.118.1080.1080/22794595_1910431192608516_3897312062363140096_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/e15/c0.90.720.720/22709502_1650998074970593_1362749103900983296_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22710899_132175430775476_6404622035992969216_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.118.1080.1080/22794595_1910431192608516_3897312062363140096_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22582460_130298740960699_8086111189894955008_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.118.1080.1080/22794595_1910431192608516_3897312062363140096_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22710846_127479771304883_6152982303007047680_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22637380_583683045088628_8594212843283283968_n.jpg'
-            },
-            {
-                photo_src: 'https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22711121_123428875017111_9175833341662855168_n.jpg'
-            },
-        ];
     }
-    ExploreComponent.prototype.explorePost = function (i) {
-        this.isPVShown = true;
+    ExploreComponent.prototype.explorePost = function (id) {
+        this.postId = id;
     };
     ExploreComponent.prototype.getGallery = function () {
-        this.apiService.getGallery().subscribe(function (data) { return console.log(data); });
+        var _this = this;
+        this.apiService.getGallery().subscribe(function (data) { return _this.gallery = data; });
+    };
+    ExploreComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.apiService.getUsers().subscribe(function (data) { return _this.usersList = data; });
     };
     ExploreComponent.prototype.ngOnInit = function () {
         this.getGallery();
+        this.getUsers();
     };
     return ExploreComponent;
 }());
