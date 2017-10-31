@@ -48,7 +48,7 @@ public class UserServiceTest {
     @Test
     public void testResourceLoad() throws IOException {
         Assert.assertNotNull(resourceLoader);
-        Resource resource = resourceLoader.getResource("file:users.json");
+        Resource resource = resourceLoader.getResource(StorageService.FILE_JSON_USERS);
 
         String json = StringUtils.readStringFromStream(resource.getInputStream());
         User[] users = (User[])StringUtils.stringToJson(json, User[].class);
