@@ -1,5 +1,5 @@
 [![license](https://img.shields.io/github/license/mrjazz/onixinstapp.svg?style=flat-square)](license)
-[![dependencies](https://www.versioneye.com/user/projects/59f8839e0fb24f1ec2863979#dialog_dependency_badge)](dependencies)
+[![dependencies](https://www.versioneye.com/user/projects/59f8839e0fb24f1ec2863979/badge.svg?style=flat-square)](dependencies)
 
 ### OnixInstApp
 
