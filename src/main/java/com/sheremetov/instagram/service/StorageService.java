@@ -20,6 +20,7 @@ public class StorageService {
 
     private static final String DEFAULT_PIC = "https://scontent-waw1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/22277665_140971593309587_94460048964583424_n.jpg?ig_cache_key=MTYyMDkwOTQ5MjU3NjA4MTAxMA%3D%3D.2";
     private static final int DEFAULT_PIC_HEIGHT = 640;
+
     @Autowired
     private ResourceLoader resourceLoader;
 
@@ -32,7 +33,7 @@ public class StorageService {
         Resource resource = null;
         String json = null;
         try {
-            resource = resourceLoader.getResource("file:users.json");
+            resource = resourceLoader.getResource("file:json/users.json");
             json = StringUtils.readStringFromStream(resource.getInputStream());
             users = (User[])StringUtils.stringToJson(json, User[].class);
         } catch (IOException e) {
@@ -40,7 +41,7 @@ public class StorageService {
         }
 
         try {
-            resource = resourceLoader.getResource("file:comments.json");
+            resource = resourceLoader.getResource("file:json/comments.json");
             json = StringUtils.readStringFromStream(resource.getInputStream());
             comments = (String[])StringUtils.stringToJson(json, String[].class);
         } catch (IOException e) {
@@ -48,7 +49,7 @@ public class StorageService {
         }
 
         try {
-            resource = resourceLoader.getResource("file:pictures.json");
+            resource = resourceLoader.getResource("file:json/pictures.json");
             json = StringUtils.readStringFromStream(resource.getInputStream());
             pictureSets = (PictureSet[])StringUtils.stringToJson(json, PictureSet[].class);
         } catch (IOException e) {
@@ -137,4 +138,5 @@ public class StorageService {
     private int getRandomTimestamp() {
         return 1508457600 - IntegerUtils.randomInt(9999);
     }
+
 }

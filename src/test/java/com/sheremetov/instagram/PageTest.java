@@ -29,7 +29,7 @@ public class PageTest {
     public void testHome() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_XHTML_XML))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("OnixInstApp")));
+                .andExpect(content().string(containsString("InstagramAngular4")));
     }
 
 }
