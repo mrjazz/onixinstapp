@@ -5,8 +5,8 @@ Main goal is support Angular4 application that represents how Instagram function
 
 ### API
 
-/api/post/{id}
-/api/post/
-/api/user/following
-/api/user/gallery
-/api/user/{id}
+ - /api/post/{id}
+ - /api/post/
+ - /api/user/following
+ - /api/user/gallery
+ - /api/user/{id}
