@@ -33,7 +33,7 @@ public class StorageTest {
     public void testProfile() {
         Assert.assertNotNull(storageService);
         Profile profile = storageService.getProfile();
-        Assert.assertNotNull(profile.getGallery().get(0).getUrl());
+        Assert.assertNotNull(profile.getGallery().get(0).getPicture());
     }
 
 

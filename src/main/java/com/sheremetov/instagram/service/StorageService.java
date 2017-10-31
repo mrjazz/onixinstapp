@@ -98,7 +98,7 @@ public class StorageService {
         int gallerySize = 6 + IntegerUtils.randomInt(3) * 3;
         for (int i = 0; i < gallerySize; i++) {
             gallery.add(
-                    new PostSummary(getRandomPicture().getUrl())
+                    new PostSummary(getRandomPicture())
             );
         }
         return gallery;
@@ -122,7 +122,7 @@ public class StorageService {
         Post post = new Post();
         post
                 .setProfile(getProfile())
-                .setPicture(getRandomPicture().getUrl())
+                .setPicture(getRandomPicture())
                 .setComments(comments)
                 .setTimestamp(getRandomTimestamp())
                 .setLikesCount(IntegerUtils.randomInt(100))

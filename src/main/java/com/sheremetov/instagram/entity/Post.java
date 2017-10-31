@@ -10,7 +10,7 @@ public class Post {
 
     private Profile profile;
     private String location;
-    private String picture;
+    private Picture picture;
     private int likesCount;
     private List<Comment> comments;
     private int timestamp;
@@ -33,11 +33,11 @@ public class Post {
         return this;
     }
 
-    public String getPicture() {
+    public Picture getPicture() {
         return picture;
     }
 
-    public Post setPicture(String picture) {
+    public Post setPicture(Picture picture) {
         this.picture = picture;
         return this;
     }

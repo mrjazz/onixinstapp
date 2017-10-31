@@ -6,22 +6,22 @@ import com.sheremetov.instagram.util.IntegerUtils;
 public class PostSummary {
 
     private int id;
-    private String url;
+    private Picture picture;
     private int likes;
     private int posts;
 
     public PostSummary() {}
 
-    public PostSummary(String url) {
-        this.url = url;
+    public PostSummary(Picture url) {
+        this.picture = url;
     }
 
     public int getId() {
         return IntegerUtils.randomInt(99999);
     }
 
-    public String getUrl() {
-        return url;
+    public Picture getPicture() {
+        return picture;
     }
 
     public int getLikes() {
