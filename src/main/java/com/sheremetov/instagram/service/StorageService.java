@@ -95,7 +95,7 @@ public class StorageService {
 
     public LinkedList<PostSummary> getGallery() {
         LinkedList<PostSummary> gallery = new LinkedList<>();
-        int gallerySize = 1 + IntegerUtils.randomInt(9);
+        int gallerySize = 6 + IntegerUtils.randomInt(3) * 3;
         for (int i = 0; i < gallerySize; i++) {
             gallery.add(
                     new PostSummary(getRandomPicture().getUrl())
