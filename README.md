@@ -1,3 +1,5 @@
+[![license](https://img.shields.io/github/license/mrjazz/onixinstapp.svg?style=flat-square)](license)
+
 ### OnixInstApp
 
 Application made for demo purposes only. It's backend to limited Instagram functionality.
