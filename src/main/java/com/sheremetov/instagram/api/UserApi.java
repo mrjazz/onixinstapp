@@ -23,7 +23,7 @@ public class UserApi {
 
     @RequestMapping(value="/following", produces = "application/json")
     public List<User> following() throws Exception {
-        return storageService.getFollowing(IntegerUtils.randomInt(5) + 1);
+        return storageService.getFollowing(3);
     }
 
     @RequestMapping(value="/gallery", produces = "application/json")
