@@ -126,58 +126,6 @@ PostViewModule = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/shared/time-ago/date-parse.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateParsePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var DateParsePipe = (function () {
-    function DateParsePipe() {
-    }
-    DateParsePipe.prototype.transform = function (value) {
-        var seconds = Math.floor((new Date().valueOf() - value) / 1000);
-        var interval = Math.floor(seconds / 31536000);
-        if (interval > 1) {
-            return interval + " years ago";
-        }
-        interval = Math.floor(seconds / 2592000);
-        if (interval > 1) {
-            return interval + " months ago";
-        }
-        interval = Math.floor(seconds / 86400);
-        if (interval > 1) {
-            return interval + " days ago";
-        }
-        interval = Math.floor(seconds / 3600);
-        if (interval > 1) {
-            return interval + " hours ago";
-        }
-        interval = Math.floor(seconds / 60);
-        if (interval > 1) {
-            return interval + " minutes ago";
-        }
-        return Math.floor(seconds) + " seconds ago";
-    };
-    return DateParsePipe;
-}());
-DateParsePipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
-        name: 'timeago'
-    })
-], DateParsePipe);
-
-//# sourceMappingURL=date-parse.pipe.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/shared/time-ago/time-ago.component.html":
 /***/ (function(module, exports) {
 
@@ -225,11 +173,10 @@ TimeAgoComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export COMPONENTS */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimeAgoModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__date_parse_pipe__ = __webpack_require__("../../../../../src/app/shared/time-ago/date-parse.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pipes_shared_pipes_module__ = __webpack_require__("../../../../../src/app/shared/pipes/shared-pipes.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__time_ago_component__ = __webpack_require__("../../../../../src/app/shared/time-ago/time-ago.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -241,10 +188,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var COMPONENTS = [
-    __WEBPACK_IMPORTED_MODULE_2__date_parse_pipe__["a" /* DateParsePipe */],
-    __WEBPACK_IMPORTED_MODULE_3__time_ago_component__["a" /* TimeAgoComponent */]
-];
 var TimeAgoModule = (function () {
     function TimeAgoModule() {
     }
@@ -252,9 +195,12 @@ var TimeAgoModule = (function () {
 }());
 TimeAgoModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
-        declarations: COMPONENTS,
-        exports: COMPONENTS,
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_2__pipes_shared_pipes_module__["a" /* SharedPipesModule */]
+        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__time_ago_component__["a" /* TimeAgoComponent */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_3__time_ago_component__["a" /* TimeAgoComponent */]],
     })
 ], TimeAgoModule);
 

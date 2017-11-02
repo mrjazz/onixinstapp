@@ -90,7 +90,7 @@ UserCardComponent = __decorate([
 /***/ "../../../../../src/app/explore/explore.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"explore-container\">\n  <div class=\"discover-people\">\n    <h2 class=\"title\">Discover People</h2>\n    <div class=\"cards-container\">\n      <app-user-card *ngFor=\"let user of usersList\" [userData]=\"user\"></app-user-card>\n    </div>\n  </div>\n  <h2 class=\"explore-title\">Explore</h2>\n  <article class=\"gallery\">\n    <div>\n      <div *ngFor=\"let item of gallery; let i = index\">\n        <div class=\"gallery-row\" *ngIf=\"i % 3 == 0\">\n          <div class=\"gallery-item\">\n            <a (click)=\"explorePost(gallery[i].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 1)\">\n            <a (click)=\"explorePost(gallery[i+1].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+1].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 2)\">\n            <a (click)=\"explorePost(gallery[i+2].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+2].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n<app-post-view (isShownChange)=\"postId=''\" [postId]=\"postId\"></app-post-view>\n"
+module.exports = "<div class=\"explore-container\">\n  <div class=\"discover-people\">\n    <h2 class=\"title\">Discover People</h2>\n    <div class=\"cards-container\">\n      <app-user-card *ngFor=\"let user of usersList\" [userData]=\"user\"></app-user-card>\n    </div>\n  </div>\n  <h2 class=\"explore-title\">Explore</h2>\n  <article class=\"gallery\">\n    <div>\n      <div *ngFor=\"let item of gallery; let i = index\">\n        <div class=\"gallery-row\" *ngIf=\"i % 3 == 0\">\n          <div class=\"gallery-item\">\n            <a (click)=\"explorePost(gallery[i].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n              <div class=\"img-overflow\">\n                <ul>\n                  <li><span>{{gallery[i].likes | formatNumbers}}</span><span class=\"heart-small-icon\">likes</span></li>\n                  <li><span>{{gallery[i].posts | formatNumbers}}</span><span class=\"speech-bubble-small-icon\">comments</span></li>\n                </ul>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 1)\">\n            <a (click)=\"explorePost(gallery[i+1].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+1].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n              <div class=\"img-overflow\">\n                <ul>\n                  <li><span>{{gallery[i+1].likes | formatNumbers}}</span><span class=\"heart-small-icon\">likes</span></li>\n                  <li><span>{{gallery[i+1].posts | formatNumbers}}</span><span class=\"speech-bubble-small-icon\">comments</span></li>\n                </ul>\n              </div>\n            </a>\n          </div>\n          <div class=\"gallery-item\" *ngIf=\"gallery.length > (i + 2)\">\n            <a (click)=\"explorePost(gallery[i+2].id)\">\n              <div class=\"preview-container\">\n                <div class=\"img-holder\"><img [src]=\"gallery[i+2].picture.url\"></div>\n                <div class=\"shift\"></div>\n              </div>\n              <div class=\"img-overflow\">\n                <ul>\n                  <li><span>{{gallery[i+2].likes | formatNumbers}}</span><span class=\"heart-small-icon\">likes</span></li>\n                  <li><span>{{gallery[i+2].posts | formatNumbers}}</span><span class=\"speech-bubble-small-icon\">comments</span></li>\n                </ul>\n              </div>\n            </a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n<app-post-view (isShownChange)=\"postId=''\" [postId]=\"postId\"></app-post-view>\n"
 
 /***/ }),
 
@@ -158,13 +158,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components__ = __webpack_require__("../../../../../src/app/explore/components/index.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_post_view_post_view_module__ = __webpack_require__("../../../../../src/app/shared/post-view/post-view.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__explore_component__ = __webpack_require__("../../../../../src/app/explore/explore.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_pipes_shared_pipes_module__ = __webpack_require__("../../../../../src/app/shared/pipes/shared-pipes.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__explore_component__ = __webpack_require__("../../../../../src/app/explore/explore.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -183,17 +185,18 @@ ExploreModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_4__components__["a" /* ComponentsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_6__shared_pipes_shared_pipes_module__["a" /* SharedPipesModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__shared_post_view_post_view_module__["a" /* PostViewModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forChild([
                 {
                     path: '',
-                    component: __WEBPACK_IMPORTED_MODULE_6__explore_component__["a" /* ExploreComponent */],
+                    component: __WEBPACK_IMPORTED_MODULE_7__explore_component__["a" /* ExploreComponent */],
                 },
             ]),
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__explore_component__["a" /* ExploreComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__explore_component__["a" /* ExploreComponent */]
         ],
         providers: []
     })

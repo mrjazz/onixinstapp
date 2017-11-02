@@ -46,15 +46,17 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_core_module__ = __webpack_require__("../../../../../src/app/core/core.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_app_component__ = __webpack_require__("../../../../../src/app/core/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_api_service__ = __webpack_require__("../../../../../src/app/shared/services/api.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_pipes_shared_pipes_module__ = __webpack_require__("../../../../../src/app/shared/pipes/shared-pipes.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_app_component__ = __webpack_require__("../../../../../src/app/core/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_services_api_service__ = __webpack_require__("../../../../../src/app/shared/services/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__routes__ = __webpack_require__("../../../../../src/app/routes.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -72,13 +74,14 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__routes__["a" /* routes */], { useHash: true }),
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_8__routes__["a" /* routes */], { useHash: true }),
             __WEBPACK_IMPORTED_MODULE_4__core_core_module__["a" /* CoreModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_5__shared_pipes_shared_pipes_module__["a" /* SharedPipesModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */]
         ],
         schemas: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* CUSTOM_ELEMENTS_SCHEMA */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_5__core_app_component__["a" /* AppComponent */]],
-        providers: [__WEBPACK_IMPORTED_MODULE_6__shared_services_api_service__["a" /* ApiService */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__core_app_component__["a" /* AppComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_7__shared_services_api_service__["a" /* ApiService */]]
     })
 ], AppModule);
 
@@ -348,6 +351,148 @@ var routes = [
     { path: '**', redirectTo: 'home', },
 ];
 //# sourceMappingURL=routes.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/pipes/date-parse.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateParsePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var DateParsePipe = (function () {
+    function DateParsePipe() {
+    }
+    DateParsePipe.prototype.transform = function (value) {
+        var seconds = Math.floor((new Date().valueOf() - value) / 1000);
+        var interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+            return interval + " years ago";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " months ago";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " days ago";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " hours ago";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutes ago";
+        }
+        return Math.floor(seconds) + " seconds ago";
+    };
+    return DateParsePipe;
+}());
+DateParsePipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        name: 'timeago'
+    })
+], DateParsePipe);
+
+//# sourceMappingURL=date-parse.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/pipes/format-numbers.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormatNumbersPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FormatNumbersPipe = (function () {
+    function FormatNumbersPipe() {
+    }
+    FormatNumbersPipe.prototype.transform = function (value) {
+        if (value < 1000) {
+            return value.toString();
+        }
+        else if (value < 10000) {
+            var number = value.toString();
+            return number[0] + ',' + number.substr(1, number.length);
+        }
+        else if (value < 1000000) {
+            return ((value / 1000).toFixed(1)) + 'K';
+        }
+        else {
+            return ((value / 1000000).toFixed(1)) + 'KK';
+        }
+    };
+    return FormatNumbersPipe;
+}());
+FormatNumbersPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        name: 'formatNumbers'
+    })
+], FormatNumbersPipe);
+
+//# sourceMappingURL=format-numbers.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/pipes/shared-pipes.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedPipesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__format_numbers_pipe__ = __webpack_require__("../../../../../src/app/shared/pipes/format-numbers.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__date_parse_pipe__ = __webpack_require__("../../../../../src/app/shared/pipes/date-parse.pipe.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var COMPONENTS = [
+    __WEBPACK_IMPORTED_MODULE_2__format_numbers_pipe__["a" /* FormatNumbersPipe */],
+    __WEBPACK_IMPORTED_MODULE_3__date_parse_pipe__["a" /* DateParsePipe */]
+];
+var SharedPipesModule = SharedPipesModule_1 = (function () {
+    function SharedPipesModule() {
+    }
+    SharedPipesModule.forRoot = function () {
+        return {
+            ngModule: SharedPipesModule_1,
+            providers: []
+        };
+    };
+    return SharedPipesModule;
+}());
+SharedPipesModule = SharedPipesModule_1 = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
+        declarations: [COMPONENTS],
+        exports: [COMPONENTS],
+    })
+], SharedPipesModule);
+
+var SharedPipesModule_1;
+//# sourceMappingURL=shared-pipes.module.js.map
 
 /***/ }),
 
